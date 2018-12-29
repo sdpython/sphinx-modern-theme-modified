@@ -28,7 +28,7 @@ def get_version():
     tag = get_git_tag()
     ma = re.match(r'v(\d+)\.(\d+)\.(\d+)\-(\d+)\-(\w+)', tag)
     if ma is None:
-        print("The git tag {} does not match the format of v1.y.z-n-abcdef1")
+        print("The git tag '{}' does not match the format of v1.y.z-n-abcdef1")
         exit(1)
     major, minor, patch, dirty, hash = ma.groups()
     if int(dirty) > 0:
