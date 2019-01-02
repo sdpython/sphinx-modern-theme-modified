@@ -9,6 +9,19 @@
 
   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css"/>
   <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+  
+    {%- macro script() %}
+        <script type="text/javascript" id="documentation_options" data-url_root="{{ pathto('', 1) }}" src="{{ pathto('_static/documentation_options.js', 1) }}"></script>
+        {%- for js in script_files %}
+            {{ js_tag(js) }}
+        {%- endfor %}
+    {%- endmacro %}
+  
+    {%- block scripts %}
+    {{- script() }}
+    {%- endblock %}
+    {%- block extrahead %}
+    {%- endblock %}
 </head>
 <body>
 <div class="container">
@@ -35,7 +48,10 @@
       <hr>
 
       <div id="toc">
-        {{ toctree(maxdepth=2, collapse=False, includehidden=True) }}
+        {{ toctree(maxdepth=2, collapse=False, includehidden=False) }}
+      <ul>
+      <li class="toctree-l1"><a class="reference internal" href="{{pathto('genindex')}}">Index</a></li>
+      </ul>
       </div>
 
       {%- if theme_versions_url %}
@@ -71,12 +87,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"
         integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD"
         crossorigin="anonymous"></script>
+
 <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.6.0/lunr.min.js"></script>
 <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+
 {%- if theme_versions_url %}
 <script src="{{ pathto('_static/versions.js', 1) }}"></script>
 {% endif %}
+
 <script>$('#searchbox').show(0)</script>
 </body>
 </html>

@@ -75,6 +75,7 @@ setup(
             '*.html',
             'static/*.css',
             'static/*.js',
+            'static/*.js_t',
         ]
     },
     classifiers=[
