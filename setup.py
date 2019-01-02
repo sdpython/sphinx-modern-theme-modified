@@ -53,6 +53,7 @@ def get_version():
 
     if int(dirty) > 0:
         version = "{version}.dev0".format(version=version, dirty=dirty)
+        raise Exception("Unexpected version number '{0}' tag='{1}'".format(version, tag))
     return version
 
 
